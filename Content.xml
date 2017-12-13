@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content id="SylvrTech Industries Starting Loadout System" name="Outfits the Albion Skunk with supreme level equipment" date="12-12-2017" version="010" save="false" enabled="true">
+	<text language="44" name="Outfits the Albion Skunk with supreme level equipment" description="This CHEAT mod updates/upgrades/installs all top tier equipment into the Albion Skunk. This includes: Railgun, Pulsed Maser, Partical Repeater, Plasma Cannon and Inertial Hammer for the weapons, plus high grade weapon mods. Dashing Shields Mk5, Sidewinder Engines Mk5 and all top-tier software. Plus 150 Elite marines 6 Interceptor Drones and 1 Trojan (leaving 1 spot for the 'Assassin purchase in Campaign mode'" author="SylvrWynd" />
+<dependency version="430"></dependency>
+</content>

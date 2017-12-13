@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="STI_XR_LOADOUT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
+	<cues>
+		<cue name="PlayerShipLoadout" instantiate="false" checktime="player.age + 10000ms">
+			<actions>
+				<do_all>
+<!-- remove existing weapons --> 
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_mining_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_mining_mk2_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_beam_v2_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_railgun_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_impulse_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_impulse_mk2_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_hept_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_plasma_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_plasma_mk2_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_plasma_charging_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_machinegun_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_machinegun_mk2_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_machinegun_mk3_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_shotgun_mk1_macro" slot="tag.primary_slot"/>
+					<remove_weapon object="player.primaryship" macro="macro.weapon_player_shotgun_mk2_macro" slot="tag.primary_slot"/>
+<!-- remove existing engines --> 
+					<find_object_component name="$EngineList" class="class.engine" object="player.primaryship" multiple="true"/>
+					<do_all exact="$EngineList.count" counter="$Counter">
+					  <upgrade_object_by_macro object="player.primaryship" macro="$EngineList.{$Counter}.macro" exact="0"/>
+					</do_all>
+<!-- remove existing shields -->
+					<find_object_component name="$ShieldList" class="class.shieldgenerator" object="player.primaryship" multiple="true"/>
+					<do_all exact="$ShieldList.count" counter="$Counter">
+					  <upgrade_object_by_macro object="player.primaryship" macro="$ShieldList.{$Counter}.macro" exact="0"/>
+					</do_all>
+<!-- Add all weapons/engines/shields -->
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.engine_player_man_mk5_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.shieldgenerator_player_rec_mk5_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.weapon_player_shotgun_mk2_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.weapon_player_machinegun_mk3_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.weapon_player_plasma_charging_mk1_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.weapon_player_hept_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.weapon_player_railgun_mk1_macro" exact="100"/>
+<!-- Add in 50 HG weapon mods --> 
+					<add_inventory ware="ware.inv_weaponmod_t3" exact="50"/>
+<!-- Add in all drones -->		
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_hacker_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+					<add_drone ship="player.primaryship" dock="true" macro="macro.unit_player_interceptor_drone_macro"/>
+<!-- remove all software -->
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_target_computer_mk1_macro" exact="0"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_target_computer_mk2_macro" exact="0"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_trading_computer_macro" exact="0"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_trading_computer_mk2_macro" exact="0"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_trading_computer_mk3_macro" exact="0"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_economy_analytics_mk1_macro" exact="0"/>
+<!-- Add in all software (including modded) -->					
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_trading_computer_mk3_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_target_computer_mk2_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_economy_analytics_mk1_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_pses_exploration_mk3_macro" exact="100"/>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.software_cf_mission_computer_macro" exact="100"/>
+<!-- Clear and add tier 3 (Police) Scanner -->
+					<find_object_component name="$ScannerList" class="class.scanner" object="player.primaryship" multiple="true"/>
+					<do_all exact="$ScannerList.count" counter="$Counter">
+						<upgrade_object_by_macro object="player.primaryship" macro="$ScannerList.{$Counter}.macro" exact="0"/>
+					</do_all>
+					<upgrade_object_by_macro object="player.primaryship" macro="macro.unit_player_ship_scanner_3_macro" exact="100"/>
+<!-- Marines added here -->          
+					<add_units object="player.primaryship" macro="macro.character_argon_male_marine_mk3_macro" exact="150"/>
+				</do_all>
+			</actions>
+		</cue>
+	</cues>
+</mdscript>
